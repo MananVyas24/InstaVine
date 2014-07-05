@@ -1,0 +1,1 @@
+-l"./configPkg/linker.cmd" "./video_loopback_test.obj" "./tvp5146.obj" "./text_functions.obj" "./tahomabold_20.obj" "./main.obj" -l"libc.a" "../evmdm6437bsl.lib" 

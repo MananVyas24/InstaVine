@@ -1,0 +1,105 @@
+\documentclass{article}
+% uncomment the line below if you like. You may lack dependencies if you do.
+ \usepackage{graphicx,amsmath,amssymb,mathrsfs,graphicx,textcomp,pstricks}
+ \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\title{InstaVine}
+\author{Manan Vyas, Nicholas Yingst, Shruti Sharma}
+\begin{document}
+\maketitle
+
+
+\noindent{\bf{\underline{Abstract}}}\\\\
+The Instagram app went viral soon after its launch. It became so popular that Facebook decided to take over it. The motivation for this project is to take the features of Instagram one step closer and create a real-time video Instagram. The user will be able to choose from a given set of filters that can be applied to the video that is being captured by the camera in real-time. The chosen filter will be applied to the captured video and displayed on the monitor.\\\\
+
+
+\noindent{\bf{\underline{Description of the system}}}\\\\
+The system will consist of the following parts:\\
+\begin{enumerate}
+\item Camera – for capturing the video
+\item DSP board 
+\begin{itemize}
+\item the switches on the board will be used for choosing the filter to be applied
+\item the DSP chip will perform the necessary processing to apply the filter to each frame of the video (24frames/second)
+\end{itemize}
+\item Monitor – for displaying the real-time video with the filter applied
+\end{enumerate}
+The advantage of this project over the already existing apps is that the effect of the filter can be seen as the video is being captured. In the existing apps, the filters are applied on captured and stored images or videos. A possible application of this project can be to integrate these features into digital cameras. This will allow the user to instantly capture videos with filters already applied to them.\\\\
+ 
+
+
+\noindent{\bf{\underline{Description of Possible Algorithms}}}\\\\
+{\bf{Effect:}} Pencil sketch \\
+{\bf{Algorithm:}} Edge detection using adaptive canny\\	
+{\bf{Description:}} The threshold for edges is computed by gradient histogram difference diagram. The image is then classified by the complexity of its edge information. Based on the edge information, the images are classified as little /rich/numerous edge information images. Different formulae are used for calculating the high and low thresholds for each type of image.\cite{7}\cite{9}\\\\  
+{\bf{Effect:}} Oil painting\\
+{\bf{Algorithm:}} Mean shift segmentation\\	
+{\bf{Description:}}Using the mean-shift algorithm, the clusters in each frame are identified. The clusters all assume the color of the mean color value of that segment. This results in smoother colors across the image and gives an oil painting like effect.\cite{1}\cite{11}\\\\
+{\bf{Effect:}} Contrast enhancement\\
+{\bf{Algorithm:}} Histogram equalization\\	
+{\bf{Description:}} The histograms of the three channels of the frame are computed. The colors of each pixel of the image are then adjusted such that the resulting histograms are spread out more evenly throughout the range of that channel (0-255). This increases the global contrast of the image and makes the image quality better.\cite{8}\\\\
+{\bf{Effect:}} Applying different filters to the foreground and the background (for ex: foreground color and background black and white, etc.)\\
+{\bf{Algorithm 1:}} Foreground-background separation using edge detection\\	
+{\bf{Description:}} Edge detection is performed and the sharp edges are differentiated from the broken and blurry ones.  The sharpest edges will be the ones that will be the nearest to the camera and hence will be classified as the foreground.\cite{12}\\
+{\bf{Algorithm 2:}} Foreground-background separation using motion detection\\	
+{\bf{Description:}} The foreground is assumed to be the moving object. When we subtract one frame from the other of the video, we can detect the moving object and classify that as the foreground. However, we cannot use this because it will not give accurate results for our demo set-up as there will be many moving objects (people) in each frame even in the background.\\\\
+{\bf{Effect:}} Vignette\\
+{\bf{Algorithm 1:}} Foreground tracking \\	
+{\bf{Description:}} Foreground-background separation and tracking the movement of the foreground over the different frames.\\
+{\bf{Algorithm 2:}} Adaptive mean-shift for automated object tracking\\	
+{\bf{Description:}} Background separation followed by shadow elimination is applied as part of pre-processing. Connected component analysis is used to classify objects as objects to track or noise. Then, mean-shift tracking is applied. This includes update condition, re-initialization of mean-shift trackers, object matching and standard mean-shift tracking with masking the search area is applied to all objects in the video.\cite{2}\cite{3}\cite{4}\\\\
+{\bf{Effect:}} Comic book effect\\
+{\bf{Algorithm:}} Dithering and Color Half toning\\	
+{\bf{Description:}} Similar to the color half toning effect that can be added in Photoshop, the comic book effect involves using error diffusion techniques like Floyd Steinberg, Stucki etc. to dither the RGB frames of the video.\cite{5}\cite{6}\\\\
+{\bf{Effect:}} White balance correction\\	
+{\bf{Description:}} Accurate colors can be difficult to map inside due to lights with differing color temperatures and non-uniform lighting. In order to correct the white balance a known white and black/grey object (eg. Sheet of paper with black and white) can be placed in the field of view and each color channel histogram can be remapped to display each color correctly.\cite{13}\\\\
+
+\noindent{\bf{\underline{Complexity Analysis}}}
+\begin{enumerate}
+\item {\bf{Edge detection using Adaptive Canny Technique}}\\
+The canny edge detection algorithm consists of the following steps:
+\begin{itemize}
+\item Convolution of image with the Gaussian blur kernel to reduce noise in image as the canny edge detector is susceptible to noise degradation.
+\item Convolution of the image with the four Canny edge detector kernel.
+\item Computation of gradient magnitude and gradient direction.
+\item Thresholding so that the image is said to consist of 10-15 percent of the total pixels as edge pixels containing edges.
+\end{itemize}
+For an image of dimension MxN ; convolutions can be efficiently performed with the time complexity as O(MN log(MN)) which is the key bottleneck for Canny Edge Detection in our project.
+\item {\bf{Mean Shift filters}}\\
+It is one of the clustering techniques used in image segmentation. For each pixel within the image, the mean shift filter defines a kernel (usually weighted by a Gaussian kernel) around the pixel of interest and computes the mean of the data. The algorithm then iteratively shift the centroid of the kernel towards the calculated mean.\\
+Calculating the kernel mean is the most computationally expensive step with a time complexity of O((MN)2) for an MxN kernel.\\
+\item {\bf{Dithering}}\\
+It is generally applied to BW images. For the comic book effect, dithering has to be applied on RGB channels separately (this can also go in Challenges section). However, the dithering algorithm is comparatively computationally inexpensive in time O(MxN) as compared to other algorithms like mean shift filter.\\\\
+\end{enumerate}
+
+
+\noindent{\bf{\underline{Major Challenges}}}
+\begin{itemize}
+\item Effectively utilize the memory on DAVINCI video board since it is limited.
+\item 24 fps for processing purposes.
+\item Find a way to store the captured and processed video to external memory for storage purposes as a novel addition to the system.
+\item Optimize the code for implementing algorithms for various filters discussed so there is minimum lag in the system.
+\end{itemize}
+
+
+\noindent{\bf{\underline{Human Factors}}}\\\\
+User controls are not a primary function of this project. If time permits, a graphical user interface will be created, however the primary form of filter selection will be the onboard DIP switches. The systems success is in large part determined by the users perceived visual quality of the displayed images. Due to the difficulty of determining perceived quality, trials will be conducted to determine the optimal settings for each filter. Users will also have the optional ability to save recorded video outputs onto the connected PC.  \\\\
+ 
+\noindent{\bf{\underline{Rough schedule}}}\\
+\begin{figure}[here]
+\includegraphics[width=6in]{gantt.jpg} 
+\end{figure} 
+
+\pagebreak
+\noindent{\bf{\underline{Final Test Set-Up}}}\\\\
+System functionality can be easily verified by viewing the image outputs on an external monitor. Filters will be visually confirmed individually and combined. The full system will include an external camera, monitor, PC, and the DSP board. There will be minimal restrictions on the placement of the camera and user, however the user will be expected to remain within the focal area of the camera. \\\\
+
+
+\noindent{\bf{\underline{Board}}}\\\\
+The DM6437 board will be used. Its larger external memory and higher quality video input/output will be necessary to make this project successful. An external monitor and standard definition camera will be used in conjunction with the board. \\\\
+ 
+\bibliographystyle{plain}
+\bibliography{ref}
+
+
+
+\end{document}

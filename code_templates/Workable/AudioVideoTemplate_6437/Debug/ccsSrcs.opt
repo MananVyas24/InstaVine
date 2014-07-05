@@ -1,0 +1,1 @@
+"../aic33_functions.c" "../boot.asm" "../main.c" "../tvp5146.c" "../vecs_timer.asm" "../video_loopback_test.c" 

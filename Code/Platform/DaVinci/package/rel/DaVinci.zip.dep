@@ -1,0 +1,38 @@
+DaVinci.zip: Platform.xdc
+Platform.xdc:
+DaVinci.zip: Platform.xs
+Platform.xs:
+DaVinci.zip: config.bld
+config.bld:
+DaVinci.zip: package/.vers_b150
+package/.vers_b150:
+DaVinci.zip: package/.vers_g180
+package/.vers_g180:
+DaVinci.zip: package/.vers_r170
+package/.vers_r170:
+DaVinci.zip: package/.xdc-x14
+package/.xdc-x14:
+DaVinci.zip: package/DaVinci.ccs
+package/DaVinci.ccs:
+DaVinci.zip: package/DaVinci.class
+package/DaVinci.class:
+DaVinci.zip: package/DaVinci.java
+package/DaVinci.java:
+DaVinci.zip: package/DaVinci.sch
+package/DaVinci.sch:
+DaVinci.zip: package/build.cfg
+package/build.cfg:
+DaVinci.zip: package/package.bld.xml
+package/package.bld.xml:
+DaVinci.zip: package/package.defs.h
+package/package.defs.h:
+DaVinci.zip: package/package.ext.xml
+package/package.ext.xml:
+DaVinci.zip: package/package.rel.dot
+package/package.rel.dot:
+DaVinci.zip: package/package_DaVinci.c
+package/package_DaVinci.c:
+DaVinci.zip: package.bld
+package.bld:
+DaVinci.zip: package.xdc
+package.xdc:

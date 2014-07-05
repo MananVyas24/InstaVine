@@ -1,0 +1,1 @@
+"./video_loopback_test.obj" "./tvp5146.obj" "./main_EDMA.obj" -l"libc.a" "../evmdm6437bsl.lib" "../linker.cmd" 

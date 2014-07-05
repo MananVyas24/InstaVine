@@ -1,0 +1,37 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\DSPSTAR\VM3224K2\ExampleCode\nd6416dsk\Cam2lcd3_EDMA\"
+ProjectType=Executable
+CPUFamily=TMS320C64XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="C:\CCStudio_v3.3\C6000\cgtools\lib\rts6400.lib"
+Source="main.c"
+Source="vm3224k.c"
+Source="c6416.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -fr"$(Proj_dir)\Debug" -d"_DEBUG" -mv6400
+
+["Compiler" Settings: "Release"]
+Options=-o3 -fr"$(Proj_dir)\Release" -mv6400
+
+["Linker" Settings: "Debug"]
+Options=-c -m".\Debug\main.map" -o".\Debug\main.out" -w -x
+
+["Linker" Settings: "Release"]
+Options=-c -m".\Release\main.map" -o".\Release\main.out" -w -x
+
+["c6416.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["c6416.cmd" Settings: "Release"]
+LinkOrder=1
+

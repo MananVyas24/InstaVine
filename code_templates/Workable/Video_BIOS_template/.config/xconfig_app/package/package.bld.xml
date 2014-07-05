@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="xconfig_app" version="" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/cfg/app_p64P.c"/>
+    </sources>
+    <configscripts>
+        <srcFile name="C:/Users/Admin/Documents/workspace/Video_BIOS_template/app.cfg"/>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/cfg/app_p64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/app_p64P.o64P.dep" src="package/cfg/app_p64P.c"/>
+        <srcFile name="package/cfg/app_p64P.dep" src="package/cfg/app_p64P.cfg"/>
+        <srcFile name="package/cfg/app.x64P.mak" src="package.bld"/>
+        <srcFile name="package/rel/xconfig_app.tar.dep" src="package/rel/xconfig_app.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,3"
+            platform="ti.platforms.sim6xxx:TMS320CDM420"
+            isa="64P"
+            suffix="64P"
+            rootDir="C:/PROGRA~2/TEXASI~1/ccsv4/tools/compiler/c6000"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    <configuration name="app"
+        pname="app.p64P"
+        target="ti.targets.C64P"
+        platform="ti.platforms.evmDM6437"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/app_p64P.cfg"
+        xCfgPrefix="package/cfg/app_p64P"
+        cfgScript="C:/Users/Admin/Documents/workspace/Video_BIOS_template/app.cfg"
+        cfgArgs="null"
+        />
+    </configurations>
+    <executables>
+    <executable name="app"
+        pname="app.x64P"
+        target="ti.targets.C64P"
+        platform="ti.platforms.evmDM6437"
+        profile="release"
+        xCfgScript="package/cfg/app_p64P.cfg"
+        xCfgPrefix="package/cfg/app_p64P"
+        cfgScript="C:/Users/Admin/Documents/workspace/Video_BIOS_template/app.cfg"
+        cfgArgs="null"
+        />
+    </executables>
+    <tests>
+    <test exeName="app.x64P"
+        args=""
+        groupName="app.x64P"
+        refOutput="undefined"
+        refExitCode="0"
+        execArgs=""
+        />
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="xconfig_app"
+        pname="xconfig_app.tar"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/package.ext.xml"/>
+        <file name="package/package.rel.dot"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

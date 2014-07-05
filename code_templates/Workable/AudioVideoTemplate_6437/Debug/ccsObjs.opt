@@ -1,0 +1,1 @@
+"./video_loopback_test.obj" "./vecs_timer.obj" "./tvp5146.obj" "./main.obj" "./boot.obj" "./aic33_functions.obj" -l"libc.a" "../evmdm6437bsl.lib" "../link.cmd" 

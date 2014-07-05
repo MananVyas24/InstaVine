@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Cam2lcd3_EDMA_6416</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>com.ti.ccstudio.managedbuild.core.ccsNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>rts6400.lib</name>
+			<type>1</type>
+			<location>C:/Program Files (x86)/Texas Instruments/ccsv4/C6000/cgtools/lib/rts6400.lib</location>
+		</link>
+		<link>
+			<name>csl6416.lib</name>
+			<type>1</type>
+			<location>C:/Program Files (x86)/Texas Instruments/ccsv4/C6000/csl/lib/csl6416.lib</location>
+		</link>
+		<link>
+			<name>dsk6416bsl.lib</name>
+			<type>1</type>
+			<location>C:/Program Files (x86)/Texas Instruments/ccsv4/C6000/dsk6416/lib/dsk6416bsl.lib</location>
+		</link>
+		<link>
+			<name>img64x.lib</name>
+			<type>1</type>
+			<location>C:/Program Files (x86)/Texas Instruments/ccsv4/IMGLIB/C6400/imglib/lib/img64x.lib</location>
+		</link>
+	</linkedResources>
+</projectDescription>
